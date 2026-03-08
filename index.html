@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy 25th Birthday!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             overflow-x: hidden;
             margin: 0;
             scroll-behavior: smooth;
+            width: 100vw;
         }
 
         .cursive { font-family: 'Dancing Script', cursive; }
@@ -50,60 +51,62 @@
             align-items: center;
             justify-content: center;
             transition: opacity 1.5s ease-out;
+            padding: 1rem;
         }
 
         .age-scene {
             position: relative;
-            height: 250px;
+            height: 200px;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
+            overflow: hidden;
         }
 
         .girl-silhouette {
             position: absolute;
             bottom: 20px;
             left: -150px;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             opacity: 0;
             z-index: 25;
         }
 
         .age-number {
             position: absolute;
-            font-size: clamp(5rem, 15vw, 8.5rem);
+            font-size: clamp(4rem, 20vw, 8.5rem);
             font-weight: 900;
             user-select: none;
         }
 
         .age-24 { color: rgba(255, 255, 255, 0.4); z-index: 10; }
-        .age-25 { color: var(--gold); text-shadow: 0 0 60px rgba(253, 224, 71, 0.9); opacity: 0; z-index: 15; transform: scale(0); }
+        .age-25 { color: var(--gold); text-shadow: 0 0 40px rgba(253, 224, 71, 0.9); opacity: 0; z-index: 15; transform: scale(0); }
 
         .animate-girl { animation: girlCinematicRun 10s forwards ease-in-out; }
         .animate-24 { animation: ageKickedRun 10s forwards ease-in-out; }
         .animate-25 { animation: ageHeavenlyDescent 10s forwards cubic-bezier(0.23, 1, 0.32, 1); }
 
         @keyframes girlCinematicRun {
-            0% { left: -150px; opacity: 0; }
+            0% { left: -100px; opacity: 0; }
             10% { opacity: 1; }
-            35% { left: 38%; transform: translateY(-20px) rotate(-10deg); }
-            42% { left: 38%; transform: translateY(0) scale(1.1); }
+            35% { left: 35%; transform: translateY(-10px) rotate(-10deg); }
+            42% { left: 35%; transform: translateY(0) scale(1.1); }
             55% { left: 40%; transform: scaleX(-1); }
             100% { left: 40%; opacity: 0; filter: blur(10px); }
         }
 
         @keyframes ageKickedRun {
             35% { transform: scale(1); opacity: 1; }
-            38% { transform: scale(1.1) rotate(20deg) translateX(20px); opacity: 1; }
+            38% { transform: scale(1.1) rotate(20deg) translateX(10px); opacity: 1; }
             45% { transform: translateX(80vw) rotate(360deg); opacity: 1; }
             55%, 100% { transform: translateX(150vw); opacity: 0; }
         }
 
         @keyframes ageHeavenlyDescent {
-            0%, 45% { opacity: 0; transform: scale(4) translateY(-150px); filter: blur(30px); }
+            0%, 45% { opacity: 0; transform: scale(4) translateY(-100px); filter: blur(30px); }
             65%, 100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
         }
 
@@ -111,7 +114,7 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            margin: 5rem 0;
+            margin: 4rem 0;
             opacity: 0;
             transition: opacity 1.5s ease;
         }
@@ -119,7 +122,8 @@
         .candle-holder {
             position: relative;
             cursor: pointer;
-            transform: scale(1.3);
+            transform: scale(1.2);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .candle-body {
@@ -153,38 +157,22 @@
             100% { transform: scale(1.05) rotate(1deg); }
         }
 
-        .smoke {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            width: 4px;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            filter: blur(4px);
-            pointer-events: none;
-            animation: smokeUp 2s forwards ease-out;
-        }
-
-        @keyframes smokeUp {
-            0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.8; }
-            100% { transform: translateX(-50%) translateY(-100px) scale(8); opacity: 0; }
-        }
-
         .blown-out .flame-wrapper { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(0); }
 
         .album-container { 
             perspective: 2500px; 
-            padding: 180px 0; 
+            padding: 120px 0; 
             overflow: visible;
             width: 100%;
+            max-width: 100vw;
+            display: flex;
+            justify-content: center;
         }
         
         .photo-carousel { 
             position: relative; 
             width: 260px; 
             height: 340px; 
-            margin: 0 auto; 
             transform-style: preserve-3d; 
             will-change: transform;
         }
@@ -203,11 +191,11 @@
             background: rgba(15, 15, 15, 0.6); 
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.8);
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
-            border-radius: 4px;
+            border-radius: 8px;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             backface-visibility: hidden;
         }
@@ -216,20 +204,19 @@
             width: 100%;
             height: 100%;
             background: #fff;
-            padding: 10px;
+            padding: 8px;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
         
-        .photo-card-wrapper:hover {
-            z-index: 500;
-        }
-
-        .photo-card-wrapper:hover .photo-card {
-            transform: translateZ(120px) rotateX(-5deg);
-            box-shadow: 0 40px 100px rgba(253, 224, 71, 0.25);
-            border-color: rgba(253, 224, 71, 0.4);
+        @media (hover: hover) {
+            .photo-card-wrapper:hover { z-index: 500; }
+            .photo-card-wrapper:hover .photo-card {
+                transform: translateZ(80px) rotateX(-5deg);
+                box-shadow: 0 30px 60px rgba(253, 224, 71, 0.25);
+                border-color: rgba(253, 224, 71, 0.4);
+            }
         }
 
         .photo-image {
@@ -262,8 +249,9 @@
             border: 1px solid rgba(253, 224, 71, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 2rem;
-            padding: 1.5rem;
+            padding: 1.2rem;
             margin: 2rem auto;
+            width: 90%;
             max-width: 380px;
             transition: all 0.5s ease;
             display: none;
@@ -281,8 +269,8 @@
         }
 
         .play-btn {
-            width: 54px;
-            height: 54px;
+            width: 48px;
+            height: 48px;
             background: var(--gold);
             color: black;
             border-radius: 50%;
@@ -292,66 +280,54 @@
             cursor: pointer;
             transition: transform 0.2s;
             flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .play-btn:active { transform: scale(0.9); }
 
-        .waveform-container {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            height: 24px;
-        }
+        .waveform-container { display: flex; align-items: center; gap: 2px; height: 24px; overflow: hidden; }
+        .waveform-bar { width: 3px; background: var(--gold); border-radius: 2px; height: 4px; transition: height 0.1s ease; }
+        .playing .waveform-bar { animation: wave 1s infinite ease-in-out; }
 
-        .waveform-bar {
-            width: 3px;
-            background: var(--gold);
-            border-radius: 2px;
-            height: 4px;
-            transition: height 0.1s ease;
-        }
-
-        .playing .waveform-bar {
-            animation: wave 1s infinite ease-in-out;
-        }
-
-        @keyframes wave {
-            0%, 100% { height: 4px; }
-            50% { height: 20px; }
-        }
+        @keyframes wave { 0%, 100% { height: 4px; } 50% { height: 20px; } }
 
         .floating { animation: floating 4s ease-in-out infinite; }
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .confetti { position: absolute; width: 8px; height: 8px; z-index: 50; animation: fall linear forwards; }
+        .confetti { position: fixed; width: 8px; height: 8px; z-index: 50; animation: fall linear forwards; }
         @keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
 
-        .signature-line {
-            width: 150px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            margin: 1rem auto;
-            opacity: 0.5;
+        .signature-line { width: 120px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 1rem auto; opacity: 0.5; }
+
+        /* --- MOBILE SPECIFIC FIXES --- */
+        @media (max-width: 768px) {
+            #entry-screen h2 { font-size: 2.5rem; line-height: 1.2; }
+            h1.cursive { font-size: 4rem; line-height: 1.1; }
+            .album-container { padding: 60px 0; perspective: 1200px; }
+            .photo-carousel { width: 150px; height: 210px; } /* Smaller cards for mobile */
+            .photo-card { padding: 6px; }
+            .photo-frame { padding: 4px; }
+            .wish-jar svg { transform: scale(0.8); }
         }
     </style>
 </head>
 <body class="bg-gradient-red min-h-screen flex flex-col items-center">
 
     <div id="entry-screen">
-        <h2 class="cursive text-5xl text-yellow-400 mb-2 text-center px-4">A Milestone Awaits...</h2>
-        <p class="text-white opacity-60 mb-8 tracking-[0.3em] uppercase text-[10px]">Exclusively for the Birthday Queen, Gi Gi</p>
-        <button id="start-btn" onclick="startApp()" class="px-12 py-5 bg-red-700 border-2 border-yellow-400 rounded-full text-white font-bold text-2xl hover:bg-red-500 transition-all shadow-2xl active:scale-95">
+        <h2 class="cursive text-yellow-400 mb-4 text-center">A Milestone Awaits...</h2>
+        <p class="text-white opacity-60 mb-10 tracking-[0.2em] uppercase text-xs text-center px-4">Exclusively for the Birthday Queen, Gi Gi</p>
+        <button id="start-btn" onclick="startApp()" class="px-8 py-4 bg-red-700 border-2 border-yellow-400 rounded-full text-white font-bold text-xl hover:bg-red-500 transition-all shadow-2xl active:scale-95">
             Begin the Journey
         </button>
     </div>
 
-    <div id="confetti-container" class="fixed inset-0 pointer-events-none"></div>
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <div id="main-content" class="text-center z-10 max-w-5xl w-full px-4 mt-16 mb-24 opacity-0 transition-opacity duration-1000">
+    <div id="main-content" class="text-center z-10 max-w-5xl w-full px-4 mt-12 mb-20 opacity-0 transition-opacity duration-1000">
         
-        <div id="ly-header" class="mb-12">
-            <h3 class="text-yellow-400 tracking-[0.6em] uppercase text-sm font-semibold mb-2">A Wish from LY</h3>
-            <div class="h-0.5 w-24 bg-yellow-400/50 mx-auto"></div>
+        <div id="ly-header" class="mb-10">
+            <h3 class="text-yellow-400 tracking-[0.4em] uppercase text-xs font-semibold mb-2">A Wish from LY</h3>
+            <div class="h-0.5 w-16 bg-yellow-400/50 mx-auto"></div>
         </div>
 
         <div class="age-scene">
@@ -364,11 +340,11 @@
             <span id="num-25" class="age-number age-25">25</span>
         </div>
 
-        <h1 class="cursive text-7xl md:text-9xl mb-4 text-white drop-shadow-2xl">Hi Gi Gi, Happy 25th Birthday!</h1>
-        <p class="text-xl md:text-2xl font-light tracking-[0.4em] uppercase mb-16 opacity-70"> Evolution of a Queen , "MAEVE"</p>
+        <h1 class="cursive mb-3 text-white drop-shadow-2xl px-2">Hi Gi Gi, Happy 25th!</h1>
+        <p class="text-sm md:text-xl font-light tracking-[0.2em] uppercase mb-12 opacity-70">Evolution of a Queen, "MAEVE"</p>
 
         <div id="candle-section" class="candle-container">
-            <p id="wish-instruction" class="text-yellow-200 tracking-[0.2em] uppercase text-xs mb-8">Close your eyes, make a wish...</p>
+            <p id="wish-instruction" class="text-yellow-200 tracking-[0.1em] uppercase text-[10px] mb-8">Close your eyes, make a wish...</p>
             <div id="candle-holder" class="candle-holder" onclick="blowCandle(this)">
                 <div class="flame-wrapper">
                     <div class="flame-outer"></div>
@@ -378,96 +354,81 @@
                     <div class="wick" style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:4px; height:12px; background:#222; border-radius:2px;"></div>
                 </div>
             </div>
-            <p id="tap-hint" class="text-white/30 text-[10px] uppercase tracking-widest mt-8 animate-pulse">Tap the flame to blow</p>
+            <p id="tap-hint" class="text-white/30 text-[9px] uppercase tracking-widest mt-8 animate-pulse">Tap the flame to blow</p>
         </div>
 
         <div id="voice-note" class="voice-note-card">
             <div class="flex items-center gap-4">
                 <div id="play-button" onclick="playVoiceNote()" class="play-btn shadow-[0_0_15px_rgba(253,224,71,0.3)]">
-                    <svg id="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <svg id="play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
-                    <svg id="pause-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <svg id="pause-icon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                     </svg>
                 </div>
-                <div class="flex-1 text-left">
-                    <p class="text-yellow-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Voice Message from LY</p>
+                <div class="flex-1 text-left overflow-hidden">
+                    <p class="text-yellow-400 text-[9px] font-bold tracking-[0.1em] uppercase mb-1 truncate">Voice Message from LY</p>
                     <div id="waveform" class="waveform-container"></div>
                 </div>
             </div>
-            <p id="voice-status" class="text-[9px] text-white/30 mt-3 tracking-widest uppercase">READY TO PLAY</p>
+            <p id="voice-status" class="text-[8px] text-white/30 mt-2 tracking-widest uppercase">READY TO PLAY</p>
         </div>
 
-        <div class="mt-32">
-            <h2 class="cursive text-5xl text-yellow-300 mb-4">Gallery of Memories</h2>
+        <div class="mt-24">
+            <h2 class="cursive text-4xl text-yellow-300 mb-2">Gallery of Memories</h2>
             <div class="album-container">
                 <div id="photo-carousel" class="photo-carousel"></div>
             </div>
-            <p class="text-white/20 text-[10px] uppercase tracking-widest mt-12">Hover to focus, Scroll to observe</p>
+            <p class="text-white/20 text-[9px] uppercase tracking-widest mt-8">Drag or Scroll to observe</p>
         </div>
 
-        <div class="mt-32">
-            <div onclick="tapJar()" class="wish-jar inline-block relative floating cursor-pointer">
+        <div class="mt-24">
+            <div onclick="tapJar()" class="wish-jar inline-block relative floating cursor-pointer -webkit-tap-highlight-color-transparent">
                 <div class="absolute -inset-4 bg-yellow-400/20 blur-2xl rounded-full"></div>
-                <svg width="100" height="130" viewBox="0 0 120 150" fill="none">
+                <svg width="80" height="104" viewBox="0 0 120 150" fill="none">
                     <path d="M20 40C20 30 30 25 60 25C90 25 100 30 100 40V120C100 135 85 145 60 145C35 145 20 135 20 120V40Z" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="2"/>
                     <circle cx="60" cy="85" r="15" fill="var(--gold)" class="animate-pulse"/>
-                    <text x="60" y="92" text-anchor="middle" fill="black" font-size="10" font-weight="bold">LY</text>
+                    <text x="60" y="92" text-anchor="middle" fill="black" font-size="12" font-weight="bold">LY</text>
                 </svg>
             </div>
-            <p class="mt-6 text-yellow-200 tracking-widest uppercase text-xs opacity-60">Unlock a Secret Wish</p>
+            <p class="mt-4 text-yellow-200 tracking-widest uppercase text-[10px] opacity-60">Unlock a Secret Wish</p>
         </div>
 
-        <div id="footer" class="mt-40 mb-20 opacity-0 transition-opacity duration-2000">
-            <p class="italic opacity-50 mb-4 text-sm tracking-widest uppercase">To my favorite person,</p>
-            <p class="text-white/80 mb-2 font-light">With all my love &lt;3</p>
+        <div id="footer" class="mt-28 mb-10 opacity-0 transition-opacity duration-2000">
+            <p class="italic opacity-50 mb-3 text-xs tracking-widest uppercase">To my favorite person,</p>
+            <p class="text-white/80 mb-2 font-light text-sm">With all my love &lt;3</p>
             <div class="signature-line"></div>
-            <p class="cursive text-5xl text-yellow-400 mt-4">Htut Aung Wai</p>
+            <p class="cursive text-4xl text-yellow-400 mt-4">Htut Aung Wai</p>
         </div>
     </div>
 
-    <div id="message-overlay" class="fixed inset-0 hidden flex items-center justify-center z-50 p-6 bg-black/90 backdrop-blur-md">
-        <div class="bg-zinc-900 border border-yellow-400/50 p-10 rounded-[3rem] max-w-lg text-center shadow-2xl">
-            <h2 id="overlay-title" class="cursive text-4xl text-yellow-300 mb-6">A Secret Wish</h2>
-            <p id="overlay-text" class="text-white/80 text-lg italic mb-10 leading-relaxed"></p>
-            <button onclick="closeGift()" class="px-8 py-3 bg-yellow-400 text-black font-bold rounded-full hover:bg-white transition-all">Continue Glowing</button>
+    <div id="message-overlay" class="fixed inset-0 hidden flex items-center justify-center z-[200] p-4 bg-black/95 backdrop-blur-md">
+        <div class="bg-zinc-900 border border-yellow-400/50 p-8 rounded-[2rem] w-full max-w-sm text-center shadow-2xl">
+            <h2 id="overlay-title" class="cursive text-3xl text-yellow-300 mb-4">A Secret Wish</h2>
+            <p id="overlay-text" class="text-white/90 text-sm md:text-base italic mb-8 leading-relaxed"></p>
+            <button onclick="closeGift()" class="px-6 py-3 bg-yellow-400 text-black font-bold rounded-full text-sm hover:bg-white transition-all">Continue Glowing</button>
         </div>
     </div>
 
     <script>
-       
         const photoUrls = [
-            "photo1.jpg", 
-            "photo2.jpg", 
-            "photo3.jpg", 
-            "photo4.jpg", 
-            "photo5.jpg", 
-            "photo6.jpg", 
-            "photo7.jpg", 
-            "photo8.jpg"
+            "photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg", 
+            "photo5.jpg", "photo6.jpg", "photo7.jpg", "photo8.jpg"
         ];
-
-       
         const AUDIO_FILE_URL = "message.mp3"; 
-
-    
-
         let audioPlayer = null;
         let isPlaying = false;
 
-        const wishes = [
-            "မွေးနေ့ကစပြီး  စိတ်ချမ်းသာ ကိုယ်ကျန်းမာနဲ့ ပျော်ရွှင်ပါစေ,Gi Gi"
-        ];
+        const wishes = ["မွေးနေ့ကစပြီး  စိတ်ချမ်းသာ ကိုယ်ကျန်းမာနဲ့ ပျော်ရွှင်ပါစေ, Gi Gi"];
 
         const waveform = document.getElementById('waveform');
-        for(let i=0; i<25; i++) {
+        for(let i=0; i<20; i++) {
             const bar = document.createElement('div');
             bar.className = 'waveform-bar';
             bar.style.animationDelay = (i * 0.05) + 's';
             waveform.appendChild(bar);
         }
-
 
         function playVoiceNote() {
             if (!AUDIO_FILE_URL) {
@@ -514,7 +475,7 @@
                     setTimeout(() => cSect.style.opacity = '1', 100);
                 }, 7500);
                 setTimeout(() => { document.getElementById('footer').style.opacity = '1'; }, 8000);
-            }, 1500);
+            }, 1000); // reduced wait time slightly for mobile feel
         }
 
         function blowCandle(el) {
@@ -523,7 +484,7 @@
             document.getElementById('wish-instruction').innerText = "WISH GRANTED ✨";
             document.getElementById('tap-hint').style.display = 'none';
             document.getElementById('voice-note').classList.add('visible');
-            createConfetti(100);
+            createConfetti(60); // reduced count slightly for mobile performance
         }
 
         function tapJar() {
@@ -531,7 +492,7 @@
             document.getElementById('overlay-text').innerText = `"${msg}"`;
             document.getElementById('message-overlay').classList.remove('hidden');
             document.getElementById('message-overlay').classList.add('flex');
-            createConfetti(40);
+            createConfetti(30);
         }
 
         function closeGift() { document.getElementById('message-overlay').classList.add('hidden'); }
@@ -544,25 +505,26 @@
                 c.className = 'confetti';
                 c.style.left = Math.random() * 100 + 'vw';
                 c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                c.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                c.style.animationDuration = (Math.random() * 2.5 + 1.5) + 's';
                 container.appendChild(c);
-                setTimeout(() => c.remove(), 5000);
+                setTimeout(() => c.remove(), 4000);
             }
         }
 
         let currentRotation = 0;
         let targetRotation = 0;
-        let rotationSpeed = 0.15;
-        let isHovered = false;
+        let rotationSpeed = 0.3; // slightly faster for mobile interaction
+        let isInteracting = false;
         const carousel = document.getElementById('photo-carousel');
 
         function updateCarouselLoop() {
-            if (!isHovered) targetRotation -= rotationSpeed;
-            currentRotation += (targetRotation - currentRotation) * 0.05;
+            if (!isInteracting) targetRotation -= rotationSpeed;
+            currentRotation += (targetRotation - currentRotation) * 0.08;
             carousel.style.transform = `rotateY(${currentRotation}deg)`;
             requestAnimationFrame(updateCarouselLoop);
         }
 
+        // Mouse tracking for subtle background effect
         document.addEventListener('mousemove', e => {
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
@@ -570,15 +532,37 @@
             document.body.style.setProperty('--mouse-y', y + '%');
         });
 
+        // Touch swipe support for the carousel
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', e => {
+            isInteracting = true;
+            touchStartX = e.touches[0].clientX;
+        }, {passive: true});
+        
+        carousel.addEventListener('touchmove', e => {
+            if(!isInteracting) return;
+            const touchX = e.touches[0].clientX;
+            const diff = touchX - touchStartX;
+            targetRotation += diff * 0.5;
+            touchStartX = touchX;
+        }, {passive: true});
+
+        carousel.addEventListener('touchend', () => { isInteracting = false; });
+        carousel.addEventListener('mouseenter', () => { isInteracting = true; });
+        carousel.addEventListener('mouseleave', () => { isInteracting = false; });
+
         window.onload = () => {
             const itemCount = photoUrls.length;
+            // DYNAMIC RADIUS: 180px for phones, 480px for desktops
+            const isMobile = window.innerWidth < 768;
+            const radius = isMobile ? 180 : 480;
+
             for(let i=0; i<itemCount; i++) {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'photo-card-wrapper';
                 const angle = i * (360 / itemCount);
-                wrapper.style.transform = `rotateY(${angle}deg) translateZ(480px)`;
+                wrapper.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
                 
-            
                 const isDefault = photoUrls[i].startsWith('photo') && photoUrls[i].endsWith('.jpg');
 
                 wrapper.innerHTML = `
@@ -595,9 +579,6 @@
                         </div>
                     </div>
                 `;
-                
-                wrapper.addEventListener('mouseenter', () => { isHovered = true; });
-                wrapper.addEventListener('mouseleave', () => { isHovered = false; });
                 carousel.appendChild(wrapper);
             }
             updateCarouselLoop();
